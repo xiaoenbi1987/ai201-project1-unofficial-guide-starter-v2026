@@ -21,26 +21,21 @@
 
 ## What This Does
 
-<!-- Three or four sentences. Which corpus you picked, and the kinds of
-     questions your system answers. Write it for someone who has never seen
-     this repo.
-
-     Milestone 5. -->
+This system answers questions about campus life using student-written posts
+and dining hall guides. It uses RAG to search through the campus_life corpus
+and return answers grounded in real documents. Questions it handles include
+dining hall hours, wait times, and course workload. It will not answer
+questions outside this corpus.
 
 ## Chunking Strategy
 
-**Chunk size:**
-**Overlap:**
+**Chunk size:** paragraph-based (no fixed size)
+**Overlap:** none
 
-<!-- What about YOUR documents made you pick these numbers? Short posts and
-     long sectioned guides don't want the same chunking, and "800 seemed
-     reasonable" earns nothing. Point at something you noticed when you read
-     the documents in Milestone 1.
-
-     If you changed your mind partway through, say so and say why. That's worth
-     more than pretending you got it right first time.
-
-     Milestone 3. -->
+The campus_life documents are short student posts, each containing one or two
+complete thoughts. Fixed 800-character windows would rarely split anything,
+so I switched to paragraph splitting. Each paragraph becomes one chunk and
+can answer a question on its own.
 
 ## Sample Chunks
 
@@ -53,29 +48,37 @@
 
      Milestone 3. -->
 
-**Chunk 1** — source: `` — produced by: ``
+**Chunk 1** — source: `admin_add_drop_deadline.txt#0` — produced by: `chunker.py::split_documents`
 
 ```
+On the add/drop deadline
 ```
 
-**Chunk 2** — source: `` — produced by: ``
+**Chunk 2** — source: `course_cs_210_workload.txt#2` — produced by: `chunker.py::split_documents`
 
 ```
+It's front-loaded — the first month is heavier than the rest, partly because you're learning the format.
 ```
 
-**Chunk 3** — source: `` — produced by: ``
+
+**Chunk 3** — source: `course_phys_130.txt#3` — produced by: `chunker.py::split_documents`
 
 ```
+The one piece of advice: the lab practical is worth 20% and almost nobody prepares for it.
 ```
 
-**Chunk 4** — source: `` — produced by: ``
+
+**Chunk 4** — source: `dining_verrill_street_grill.txt#1` — produced by: `chunker.py::split_documents`
 
 ```
+I'm a junior and I've done this twice now. Wait times: up to 30 minutes on Friday evenings, otherwise under 10. The thing worth going for is the burger, which is the only late-night hot food on campus. The thing to know is that one register, so the queue is a single line no matter how busy.
 ```
 
-**Chunk 5** — source: `` — produced by: ``
+
+**Chunk 5** — source: `housing_morrow_house.txt#2` — produced by: `chunker.py::split_documents`
 
 ```
+The good: cheapest housing tier by about $900 a year, and the singles are real singles.
 ```
 
 ## Sample Answer
