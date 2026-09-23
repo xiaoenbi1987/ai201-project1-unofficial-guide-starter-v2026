@@ -181,7 +181,7 @@ The answer "three equally weighted midterms, no final" exists in the corpus but 
 ## What's Still Broken
 
 All five criteria were met after the improvement. However, criterion 1 was originally set at 4 of 5, which was easy to clear. If I were continuing, I would tighten it to 5 of 5 and test whether the system holds — especially for edge cases where the answer spans multiple documents.
-
+Produced by: `run_eval.py::main`, chunker: `chunker.py::split_documents`
 ## What I'd Do Differently
 
 I would write criterion 1 as "5 of 5" instead of "4 of 5" from the start. Setting it at 4 of 5 left too much room — a system that misses one question consistently is still passing. A tighter target would have pushed me to fix the chunking problem sooner.
