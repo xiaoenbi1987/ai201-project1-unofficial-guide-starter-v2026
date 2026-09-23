@@ -106,7 +106,7 @@ Source: dining_halden_hall_followup.txt
 **1.** I asked Claude to write the paragraph-based chunking function. It returned a working version but did not include any minimum chunk length check. I reviewed the output and accepted it as-is since campus_life posts are already short enough.
 
 **2.** I asked Claude to suggest test questions for my corpus. It gave me five questions based on the documents I shared. I kept the questions but wrote the `expects` keywords myself after checking the actual document content.
-
+**3.** I asked Claude to help diagnose why Question 5 failed. It suggested the answer was split across chunks. I verified this by checking the corpus files directly, then implemented the merge fix myself.
 <!-- ── Stretch features ─────────────────────────────────────────────────────
      Doing one? Say so here BEFORE you start. A feature this README never
      claims earns nothing.
